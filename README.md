@@ -1,233 +1,81 @@
 <div align="center">
-  <h2 align="center">Hand Gesture Recognition for Contactless Human-Computer Interaction</h2>
+  <h2 align="center">HandSnip</h2>
   <p align="center">
-    <img src="https://img.shields.io/badge/Deep%20Learning-blue"/>
-    <img src="https://img.shields.io/badge/Computer%20Vision-orange"/>
-    <img src="https://img.shields.io/badge/Human--Computer%20Interaction-success"/>
+    <img src="https://img.shields.io/badge/Python-3.11-blue"/>
+    <img src="https://img.shields.io/badge/OpenCV-4.11-orange"/>
+    <img src="https://img.shields.io/badge/MediaPipe-green"/>
     <br>
-    Building a hand gesture recognition model and using it to identify hand gestures in real-time to trigger actions on a computer
+    Gesture-driven screen snipping and recording tool using hand gestures
   </p>
 </div>
 
-<details open="open">
-  <summary><h3 style="display: inline-block">Table of Contents</h3></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About the Project</a>
-      <ul>
-        <li>
-          <a href="#built-with">Built with</a>
-        </li>
-        <li>
-          <a href="#dataset">Dataset</a>
-        </li>
-        <li>
-          <a href="#example">Example Usage</a>
-        </li>
-        <li>
-          <a href="#outline">Project Outline</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="#prerequisites">Prerequisites</a>
-    </li>
-    <li>
-      <a href="#setup">Setup</a>
-    </li>
-    <li>
-      <a href="#acknowledgments">Acknowledgments</a>
-    </li>
-  </ol>
-</details>
+## About HandSnip
 
-<h3 id="about-the-project">About the Project</h3>
+HandSnip is a touch-less, gesture-driven application that uses your webcam to capture screenshots and record your screen using simple hand gestures. No keyboard or mouse required!
 
-<p>
-  The COVID-19 pandemic has inevitably accelerated the adoption of a number of contactless Human-Computer Interaction (HCI) technologies, one of which is the hand gesture control technology. Hand gesture-controlled applications are widely used across various industries, including healthcare, food services, entertainment, smartphone and automotive.
+### Features
 
-  In this project, a hand gesture recognition model is trained to recognize static and dynamic hand gestures. The model is used to predict hand gestures in real-time through the webcam. Depending on the hand gestures predicted, the corresponding keystrokes (keyboard shortcuts) will be sent to trigger actions on a computer.
-</p>
+- 🖐️ **Freeze screen** with open palm gesture
+- 🤏 **Select region** by pinching and dragging
+- 👍 **Save screenshots** with thumbs up
+- 👎 **Cancel** with thumbs down or fist
+- 👌 **Record screen** with circle gesture
+- 📸 Screenshots saved automatically with timestamps
+- 🎥 Full-screen video recording
 
-<h4 id="built-with">Built with</h4>
+## Gesture Controls
 
-* [Keras](https://keras.io/)
-* [OpenCV](https://opencv.org/)
-* [Plotly](https://plotly.com/)
-* [pynput](https://pynput.readthedocs.io/en/latest/)
-* [keras-hypetune](https://github.com/cerlymarco/keras-hypetune)
+| Gesture | Action |
+|---------|--------|
+| 🖐️ **Open Palm** | Freeze the current screen |
+| 🤏 **Pinch & Drag** | Select screenshot region (draw rectangle) |
+| 👍 **Thumbs Up** | Save screenshot and unfreeze |
+| 👎 **Thumbs Down** | Cancel selection and unfreeze |
+| ✊ **Fist** | Cancel selection and unfreeze |
+| 👌 **Circle** | Start/stop full-screen video recording |
 
-<h4 id="dataset">Dataset</h4>
+## Installation
 
-<p>
-  The dataset used is a subset of the 20BN-Jester dataset from
-  <a href="https://www.kaggle.com/datasets/toxicmender/20bn-jester">Kaggle</a>. It is a large collection of labelled video clips of humans performing hand gestures in front of a camera. 
-  
-  The full dataset consists of 27 classes of hand gestures in 148,092 video clips of 3 seconds length, which in total account for more than 5 million frames.
+### Prerequisites
 
-  In this project, 10 classes of hand gestures have been selected to train the hand gesture recognition model.
-</p>
+- Python 3.11 or above
+- macOS (tested on macOS with M2 chip)
+- Webcam with camera permissions enabled
 
-<h4 id="example">Example Usage</h4>
+### Setup
 
-Any actions on a computer can be triggered as long as they are linked to a keyboard shortcut. For simplicity, this project is configured to trigger actions on YouTube because it has its own built-in keyboard shortcuts.
-
-The table below shows the hand gestures and the actions they trigger on YouTube.
-
-<div>
-  <table>
-    <tr>
-      <th>Hand gesture</th>
-      <th>Action</th>
-    </tr>
-    <tr>
-      <td>Swiping Left
-        <br><img src="assets/swiping_left.gif" alt="swiping_left"></td>
-      <td>Fast forward 10 seconds</td>
-    </tr>
-    <tr>
-      <td>Swiping Right
-      <br><img src="assets/swiping_right.gif" alt="swiping_right"></td>
-      <td>Rewind 10 seconds</td>
-    </tr>
-    <tr>
-      <td>Swiping Down
-      <br><img src="assets/swiping_down.gif" alt="swiping_down"></td>
-      <td>Previous video</td>
-    </tr>
-    <tr>
-      <td>Swiping Up
-      <br><img src="assets/swiping_up.gif" alt="swiping_up"></td>
-      <td>Next video</td>
-    </tr>
-    <tr>
-      <td>Sliding Two Fingers Down
-      <br><img src="assets/sliding_two_fingers_down.gif" alt="sliding_two_fingers_down"></td>
-      <td>Decrease volume</td>
-    </tr>
-    <tr>
-      <td>Sliding Two Fingers Up
-      <br><img src="assets/sliding_two_fingers_up.gif" alt="sliding_two_fingers_up"></td>
-      <td>Increase volume</td>
-    </tr>
-    <tr>
-      <td>Thumb Down<br><img src="assets/thumb_down.gif" alt="thumb_down"></td>
-      <td>Mute / unmute</td>
-    </tr>
-    <tr>
-      <td>Thumb Up<br><img src="assets/thumb_up.gif" alt="thumb_up"></td>
-      <td>Enter / exit full screen</td>
-    </tr>
-    <tr>
-      <td>Stop Sign<br><img src="assets/stop_sign.gif" alt="stop_sign"></td>
-      <td>Play / Pause</td>
-    </tr>
-    <tr>
-      <td>No Gesture<br><img src="assets/no_gesture.gif" alt="no_gesture"></td>
-      <td>No action</td>
-    </tr>
-  </table>
-</div>
-
-<h3 id="handsnip">HandSnip: Gesture-Driven Snipping</h3>
-
-<p>
-  This repository now includes <b>HandSnip</b>, a touch-less, gesture-driven snipping tool that uses your webcam and the trained gesture model to capture screen regions with your hand.
-</p>
-
-<b>Key gestures</b>:
-<ul>
-  <li><b>Stop Sign</b>: Arm the snipping tool</li>
-  <li><b>Pinch</b> (thumb-index): Start and drag the selection rectangle</li>
-  <li><b>Thumb Up</b>: Confirm and snip</li>
-  <li><b>Thumb Down</b>: Cancel selection</li>
-  <li><b>No gesture</b>: No action</li>
-  <!-- Future ideas: Sliding Two Fingers Up/Down for long screenshots, Swiping Up to toggle recording -->
-  <!-- Circle gesture could confirm too if added -->
-  <!-- SnapAssist to align to window/grid could be explored as an extension -->
-</ul>
-
-<b>Install</b>:
-
+1. Clone the repository:
 ```sh
-pip install -r requirements.txt
+git clone https://github.com/sailee02/HandSnip.git
+cd HandSnip
 ```
 
-<b>Run</b>:
-
+2. Create a virtual environment:
 ```sh
-python handsnip.py --model /path/to/model.h5 --frames 16 --height 256 --width 256 --conf 0.75 --out snips
-```
-
-<b>Notes</b>:
-<ul>
-  <li>Model must be compatible with the 3D ResNet input (T x H x W x 3). Default labels are read from <code>dataset/labels_extracted.csv</code>.</li>
-  <li>Screen captures are saved into the <code>snips/</code> directory by default.</li>
-  <li>Pinch detection uses MediaPipe Hands; ensure your Python environment supports it on macOS.</li>
-</ul>
-
-<h4>Web App Mode</h4>
-
-<p>
-  You can run a local web app UI that streams your webcam to the backend:
-</p>
-
-```sh
-python webapp.py
-# Open http://127.0.0.1:5000
-```
-
-<p>
-  The page shows a video preview and status, and provides buttons for Arm/Confirm/Cancel, Long Screenshot, Record, and OCR. Gestures also work if you run with a model.
-</p>
-
-<h3 id="structure">Repository Structure and How It Works</h3>
-
-<pre>
-Hand-Gesture-Recognition-for-HCI/
-├─ assets/                         # GIFs and images used in docs/examples
-├─ dataset/
-│  ├─ frames/                      # Extracted GIF frames grouped by label
-│  └─ frames_split/                # Train/val/test split of frames
-├─ lib/
-│  ├─ image.py                     # Keras preprocessing utilities (vendored)
-│  ├─ data_loader.py               # Label/dataframe helpers for video data
-│  └─ resnet_model.py              # 3D-ResNet (Keras) definition
-├─ scripts/
-│  ├─ extract_gif_frames.py        # Convert target GIFs → labeled PNG frames
-│  ├─ split_frames.py              # Split frames into train/val/test
-│  └─ train_frames_cnn.py          # Train MobileNetV2 on 4+ frame classes
-├─ handsnip.py                     # Gesture-driven snipping/recording app
-├─ webapp.py                       # Minimal Flask UI (browser) for snipping
-├─ screenshots/                    # Saved screenshots (created at runtime)
-├─ video_recordings/               # Saved screen recordings (created at runtime)
-├─ requirements.txt
-└─ README.md
-</pre>
-
-<h4>Key Components</h4>
-
-- <b>handsnip.py</b>: Standalone app that opens the webcam, recognizes hand states with MediaPipe, and controls:
-  - Open palm: freeze screen and show overlay.
-  - Pinch + drag: select region with a semi-transparent rectangle; release to finalize.
-  - Thumbs up: save screenshot to <code>screenshots/{yyyymmdd}_{HHMMSS}.png</code>.
-  - Thumbs down / fist: cancel and unfreeze.
-  - Circle (or double open-palm fallback): start/stop full-screen recording → <code>video_recordings/{start}_{end}.mp4</code>.
-  - Camera-to-screen normalization maps camera corners to screen corners and supports gain/edge extrapolation to reach the entire screen without leaving the webcam’s FOV.
-
-- <b>webapp.py</b>: Lightweight local Flask server that serves a single HTML page to send webcam frames and trigger actions (buttons for arm/confirm/cancel/record/OCR). Useful if you prefer a mouse-driven UI instead of gestures.
-
-- <b>scripts/*</b>: One-off utilities to prepare data and train a simple frame-based model:
-  - <code>extract_gif_frames.py</code> extracts labeled frames from specific GIFs (e.g., <code>open-palm-left.gif</code>, <code>thumbs-up-right.gif</code>).
-  - <code>split_frames.py</code> splits frames to <code>train/val/test</code>.
-  - <code>train_frames_cnn.py</code> trains MobileNetV2 on the frame set, exporting an <code>.h5</code> and a <code>.labels.json</code>.
-
-<h4>HandsSnip – CLI and Parameters</h4>
-
-Run (preview window enabled):
-
-```sh
+python3.11 -m venv .venv311
 source .venv311/bin/activate
+```
+
+3. Install dependencies:
+  ```sh
+  pip install -r requirements.txt
+  ```
+
+## Usage
+
+### Basic Usage
+
+Run HandSnip with preview window:
+
+```sh
+python handsnip.py --preview
+```
+
+### Advanced Usage
+
+Run with optimized parameters:
+
+```sh
 python handsnip.py \
   --out screenshots \
   --video_out video_recordings \
@@ -239,99 +87,99 @@ python handsnip.py \
   --edge_extrap_thresh 80 \
   --edge_extrap_step 60 \
   --cam_norm_left 0.15 --cam_norm_right 0.85 \
-  --cam_norm_top 0.15  --cam_norm_bottom 0.85
+  --cam_norm_top 0.15 --cam_norm_bottom 0.85
 ```
 
-Important flags:
-- <b>--drag_gain</b>: Scales fingertip movement to screen delta (increase to reach corners faster).
-- <b>--cam_norm_* bounds</b>: Map the inner camera box to the full screen; adjust if your camera FOV is wide/narrow.
-- <b>--edge_extrap_* </b>: Keep expanding selection near camera edges so you don’t need to leave the frame.
+### Parameters
 
-Gesture flow:
-- <b>Open palm</b>: freeze screen and show overlay.
-- <b>Pinch + drag</b>: draw/adjust rectangle; on release, rectangle is finalized and stays.
-- <b>Thumbs up</b>: save to <code>screenshots/{yyyymmdd}_{HHMMSS}.png</code>.
-- <b>Thumbs down / fist</b>: cancel and unfreeze.
-- <b>Circle</b>: start/stop full-screen recording → <code>video_recordings/{start}_{end}.mp4</code>. Fallback: double open-palm toggles recording if a circle model isn’t available.
+- `--out`: Directory for saved screenshots (default: `screenshots/`)
+- `--video_out`: Directory for saved video recordings (default: `video_recordings/`)
+- `--preview`: Show webcam preview window
+- `--palm_frames`: Number of consecutive frames to detect open palm (default: 2)
+- `--palm_spread`: Minimum finger spread threshold for open palm (default: 0.22)
+- `--pinch_thresh`: Maximum distance between thumb and index for pinch (default: 0.10)
+- `--drag_gain`: Sensitivity multiplier for drag movement (default: 4.0)
+- `--edge_extrap_thresh`: Pixel threshold for edge extrapolation (default: 80)
+- `--edge_extrap_step`: Pixels to extend when near edge (default: 60)
+- `--cam_norm_left/right/top/bottom`: Camera normalization bounds (default: 0.15-0.85)
 
-<h4>Web App (optional)</h4>
+## Workflow
 
-```sh
-source .venv/bin/activate
-python webapp.py
-# open http://127.0.0.1:5000
+### Screenshot Workflow
+
+1. Make an **open palm** gesture → Screen freezes
+2. **Pinch** (thumb touching index) and **drag** to select region
+3. Release pinch → Rectangle is locked
+4. **Thumbs up** → Screenshot saved to `screenshots/YYYYMMDD_HHMMSS.png`
+5. **Thumbs down** or **fist** → Cancel and unfreeze
+
+### Video Recording Workflow
+
+1. Make a **circle** gesture (OK sign) → Recording starts
+2. Do whatever you want on screen → Recording continues in background
+3. Make **circle** gesture again → Recording stops and saves to `video_recordings/{start}_{end}.mp4`
+
+## Project Structure
+
+```
+HandSnip/
+├── handsnip.py              # Main application
+├── lib/
+│   ├── data_loader.py       # Data loading utilities
+│   ├── image.py             # Image preprocessing
+│   └── resnet_model.py      # 3D ResNet model definition
+├── scripts/
+│   ├── extract_gif_frames.py    # Extract frames from GIFs
+│   ├── split_frames.py          # Split dataset into train/val/test
+│   └── train_frames_cnn.py      # Train frame-based CNN model
+├── dataset/                 # Training data (not in git)
+├── screenshots/             # Saved screenshots (created at runtime)
+├── video_recordings/        # Saved recordings (created at runtime)
+├── requirements.txt
+└── README.md
 ```
 
-<h4>Troubleshooting</h4>
+## Troubleshooting
 
-- If no windows appear, confirm macOS Privacy & Security permissions:
-  - Camera + Screen Recording + Accessibility for your Terminal/IDE.
-- Close other apps that may be using the camera (Zoom/Meet).
-- Increase <code>--drag_gain</code> (e.g., 4.0 → 5.0) or tighten camera bounds (e.g., 0.2/0.8) if you can’t reach the corners.
-- If pinch doesn’t trigger, bring thumb and index closer and centered; you can raise <code>--pinch_thresh</code>.
+### Camera Not Opening
 
-<h3 id="outline">Project Outline</h3>
+- Check macOS Privacy & Security settings:
+  - **Camera** permission for Terminal/IDE
+  - **Screen Recording** permission
+  - **Accessibility** permission
+- Close other apps using the camera (Zoom, FaceTime, etc.)
+- Try running with `--preview` flag to see the webcam window
 
-<ol>
-  <li>
-    <b><a href="DataExploration&Extraction.ipynb">Data Exploration</a></b>
-    <ul>
-      <li>Explore class distribution of training and validation data.
-      <br>Training data:<img src="assets/class_dist_train.png" alt="class_distribution_train">
-      <br>Validation data:<img src="assets/class_dist_validation.png" alt="class_distribution_validation"></li>
-    </ul>
-  </li>
-  <li>
-    <b><a href="DataExploration&Extraction.ipynb">Data Extraction</a></b> 
-    <ul>
-      <li>Extract training and validation data of the selected classes from the dataset.</li>
-    </ul>
-  </li>
-  <li>
-    <b><a href="HyperparameterTuning.ipynb">Hyperparameter Tuning</a></b> 
-    <ul>
-      <li>Perform grid search to determine the optimal values for dropout and learning rate.</li>
-    </ul>
-  </li>
-  <li>
-    <b><a href="Training.ipynb">Model Training</a></b> 
-    <ul>
-      <!-- <li>Set parameters such as number of frames of each videos to be used, input shape of the frames, batch size and number of epochs.</li> -->
-      <li>Build a 3D ResNet-101 model with the optimal hyperparameters.</li>
-      <li>Compile the model.</li>
-      <li>Train the model.</li>
-    </ul>
-  </li>
-  <!-- <li>
-    <b>Evaluation</b> 
-    <ul>
-      <li>Plot the model's accuracy and loss history graphs.</li>
-      <li>Use the model to predict the classes of the testing samples.</li>
-      <li>Plot a classification report.</li>
-      <li>Plot a confusion matrix.</li>
-    </ul>
-  </li> -->
-  <li>
-    <b><a href="Classification.ipynb">Classification</a></b> 
-    <ul>
-      <li>Read frames from the webcam, predict the hand gestures in the frames using the model and send the corresponding keystrokes to trigger actions on the computer.</li>
-    </ul>
-  </li>
-</ol>
+### Can't Select Full Screen
 
-<h3 id="prerequisites">Prerequisites</h3>
+- Increase `--drag_gain` (e.g., 4.0 → 5.0)
+- Adjust camera normalization bounds (`--cam_norm_*`)
+- Increase `--edge_extrap_thresh` and `--edge_extrap_step`
 
-* Python 3.7.9 or above
+### Gestures Not Detecting
 
-<h3 id="setup">Setup</h3>
+- Ensure good lighting
+- Keep hand clearly visible in webcam frame
+- Adjust thresholds:
+  - `--palm_spread` (lower = more sensitive)
+  - `--pinch_thresh` (higher = easier to pinch)
 
-  ```sh
-  pip install -r requirements.txt
-  ```
+## Requirements
 
-<h3 id="acknowledgments">Acknowledgments</h3>
+See `requirements.txt` for full list. Key dependencies:
 
-* [20bn-jester - Jester Dataset V1 for Hand Gesture Recognition _by toxicmender on Kaggle_](https://www.kaggle.com/datasets/toxicmender/20bn-jester)
-* [The Jester Dataset: A Large-Scale Video Dataset of Human Gestures _by Joanna Materzynska, Guillaume Berger, Ingo Bax and Roland Memisevic_](https://openaccess.thecvf.com/content_ICCVW_2019/papers/HANDS/Materzynska_The_Jester_Dataset_A_Large-Scale_Video_Dataset_of_Human_Gestures_ICCVW_2019_paper.pdf)
-* [Create Deep Learning Computer Vision Apps using Python 2020 _by Coding Cafe on Udemy_](https://www.udemy.com/course/create-deep-learning-computer-vision-apps-using-python-2020/)
-* [3D ResNet implementation _by JihongJu_](https://github.com/JihongJu/keras-resnet3d/)
+- `opencv-python` - Video capture and image processing
+- `mediapipe` - Hand landmark detection
+- `numpy` - Numerical operations
+- `Pillow` - Image manipulation
+- `mss` - Screen capture
+- `pyautogui` - Mouse control and screenshots
+
+## License
+
+This project is open source and available for personal and educational use.
+
+## Acknowledgments
+
+- MediaPipe for hand tracking
+- OpenCV for computer vision utilities
