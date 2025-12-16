@@ -25,14 +25,14 @@ HandSnip is a touch-less, gesture-driven application that uses your webcam to ca
 
 ## Gesture Controls
 
-| Gesture | Action |
-|---------|--------|
-| 🖐️ **Open Palm** | Freeze the current screen |
-| 🤏 **Pinch & Drag** | Select screenshot region (draw rectangle) |
-| 👍 **Thumbs Up** | Save screenshot and unfreeze |
-| 👎 **Thumbs Down** | Cancel selection and unfreeze |
-| ✊ **Fist** | Cancel selection and unfreeze |
-| 👌 **Circle** | Start/stop full-screen video recording |
+| Gesture | GIF | Action |
+|---------|-----|--------|
+| 🖐️ **Open Palm** | <img src="assets/open-palm-left.gif" alt="open palm" width="150"/> | Freeze the current screen |
+| 🤏 **Pinch & Drag** | <img src="assets/pinch-and-drag-left-to-right-left.gif" alt="pinch and drag" width="150"/> | Select screenshot region (draw rectangle) |
+| 👍 **Thumbs Up** | <img src="assets/thumbs-up-left.gif" alt="thumbs up" width="150"/> | Save screenshot and unfreeze |
+| 👎 **Thumbs Down** | <img src="assets/thumbs-down-left.gif" alt="thumbs down" width="150"/> | Cancel selection and unfreeze |
+| ✊ **Fist** | <img src="assets/stop_sign.gif" alt="fist" width="150"/> | Cancel selection and unfreeze |
+| 👌 **Circle** | <img src="assets/circle-left.gif" alt="circle" width="150"/> | Start/stop full-screen video recording |
 
 ## Installation
 
