@@ -31,7 +31,6 @@ HandSnip is a touch-less, gesture-driven application that uses your webcam to ca
 | 🤏 **Pinch & Drag** | <img src="assets/pinch-and-drag-left-to-right-left.gif" alt="pinch and drag" width="150"/> | Select screenshot region (draw rectangle) |
 | 👍 **Thumbs Up** | <img src="assets/thumbs-up-left.gif" alt="thumbs up" width="150"/> | Save screenshot and unfreeze |
 | 👎 **Thumbs Down** | <img src="assets/thumbs-down-left.gif" alt="thumbs down" width="150"/> | Cancel selection and unfreeze |
-| ✊ **Fist** | <img src="assets/stop_sign.gif" alt="fist" width="150"/> | Cancel selection and unfreeze |
 | 👌 **Circle** | <img src="assets/circle-left.gif" alt="circle" width="150"/> | Start/stop full-screen video recording |
 
 ## Installation
@@ -174,12 +173,3 @@ See `requirements.txt` for full list. Key dependencies:
 - `Pillow` - Image manipulation
 - `mss` - Screen capture
 - `pyautogui` - Mouse control and screenshots
-
-## License
-
-This project is open source and available for personal and educational use.
-
-## Acknowledgments
-
-- MediaPipe for hand tracking
-- OpenCV for computer vision utilities
